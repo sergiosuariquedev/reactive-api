@@ -1,10 +1,7 @@
 services:
-  mysql:
-    image: 'mysql:latest'
-    environment:
-      - 'MYSQL_DATABASE=mydatabase'
-      - 'MYSQL_PASSWORD=secret'
-      - 'MYSQL_ROOT_PASSWORD=verysecret'
-      - 'MYSQL_USER=myuser'
+  app:
+    build: .
     ports:
-      - '3306'
+      - "${HOST_PORT}:8080"
+    env_file:
+      - .env

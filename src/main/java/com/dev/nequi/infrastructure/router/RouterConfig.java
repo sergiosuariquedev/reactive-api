@@ -56,7 +56,7 @@ public class RouterConfig {
             .PUT("/franquicias/{id}/sucursales/{sucursalId}/nombre", handler::actualizarNombreSucursal)
             .PUT("/franquicias/{id}/sucursales/{sucursalId}/productos/{productoId}/nombre", handler::actualizarNombreProducto)
             .build();
-}
+    }
 
 
 }
