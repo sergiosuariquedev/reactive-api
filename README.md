@@ -20,17 +20,21 @@ Antes de ejecutar la aplicación, asegúrate de tener instalados los siguientes 
 
 - JDK 21 (si no estás usando Docker para ejecutar la aplicación)
 
-##Despliegue Local
+## Despliegue Local
 1. Clonar el Repositorio
  - git clone https://github.com/sergiosuariquedev/reactive-api.git
  - cd reactive-api
 2. Construir y Ejecutar con Docker Compose
 Construye y ejecuta la aplicación con el siguiente comando:
- - docker-compose up --build
+ - `docker-compose up --build`\ 
 Esto descargará las imágenes necesarias, construirá la aplicación y la ejecutará en el puerto 8080 de tu máquina local.
 3. Configuración de puerto maquina host, el puesto por defecto es 8080, pero si se requiere modificar se debe modifcar el vaor de la variable HOST_PORT en el arcivo.env
 4. Acceder a la API
 La API estará disponible en http://localhost:8080.
+
+## Ejecución api en la nube
+Para probar el funcionamiento del api en la nube hacer request al siguiente url:
+- http://164.92.109.128:3345/
 
 ## Notas
 - La aplicación está dockerizada, por lo que es fácil de desplegar en cualquier entorno que soporte contenedores.
