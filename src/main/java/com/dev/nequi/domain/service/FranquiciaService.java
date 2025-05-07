@@ -190,8 +190,10 @@ public class FranquiciaService {
             });
     }
     
+    public Mono<List<Franquicia>> obtenerTodasLasFranquicias() {
+        return franquiciaRepository.findAll()
+            .collectList()
+            .switchIfEmpty(Mono.error(new RuntimeException("No se encontraron franquicias")));
     
-    
-    
-    
+    }
 }

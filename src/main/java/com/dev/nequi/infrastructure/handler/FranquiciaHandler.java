@@ -119,6 +119,14 @@ public class FranquiciaHandler {
             .flatMap(fr -> ServerResponse.ok().bodyValue(fr))
             .onErrorResume(e -> ServerResponse.badRequest().bodyValue(e.getMessage()));
     }
+
+    public Mono<ServerResponse> obtenerTodasLasFranquicias(ServerRequest request) {
+        return franquiciaService.obtenerTodasLasFranquicias()
+            .flatMap(franquicias -> ServerResponse.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .bodyValue(franquicias))
+            .onErrorResume(e -> ServerResponse.badRequest().bodyValue(e.getMessage()));
+    }
     
 
 }

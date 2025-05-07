@@ -5,16 +5,18 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
-import static org.springframework.web.reactive.function.server.RouterFunctions.route;
-import static org.springframework.web.reactive.function.server.RequestPredicates.POST;
 
 import com.dev.nequi.infrastructure.handler.FranquiciaHandler;
 
 @Configuration
 public class RouterConfig {
     @Bean
-    public RouterFunction<ServerResponse> router(FranquiciaHandler handler) {
-        return route(POST("/franquicias"), handler::crearFranquicia);
+    public RouterFunction<ServerResponse> franquiciasRoutes(FranquiciaHandler handler) {
+        return RouterFunctions.route()
+            .POST("/franquicias", handler::crearFranquicia)
+            .GET("/franquicias", handler::obtenerTodasLasFranquicias)   
+            .build()
+            ;
     }
 
     @Bean
@@ -55,8 +57,6 @@ public class RouterConfig {
             .PUT("/franquicias/{id}/sucursales/{sucursalId}/productos/{productoId}/nombre", handler::actualizarNombreProducto)
             .build();
 }
-
-
 
 
 }
