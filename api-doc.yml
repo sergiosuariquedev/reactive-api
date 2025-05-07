@@ -1,0 +1,100 @@
+openapi: 3.0.0
+info:
+  title: nequiapp
+  version: 1.0.0
+  description: ''
+servers:
+  - url: localhost
+paths:
+  /franquicias/681b970528104a437fbc7a3d/productos/max-stock:
+    parameters: []
+    get:
+      summary: max-stock
+      parameters: []
+      responses: {}
+  /franquicias/681b970528104a437fbc7a3d/nombre:
+    parameters: []
+    put:
+      summary: cambiar nombre franquicia
+      parameters: []
+      responses: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nuevoNombre:
+                  type: string
+  /franquicias/681b970528104a437fbc7a3d/sucursales/10b7a384-77be-4e12-96e5-67779cc6bdbd/nombre:
+    parameters: []
+    put:
+      summary: cambiar nombre sucursal
+      parameters: []
+      responses: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nuevoNombre:
+                  type: string
+  /franquicias/681b970528104a437fbc7a3d/sucursales/10b7a384-77be-4e12-96e5-67779cc6bdbd/productos/e93c96a8-d431-4b1c-95f0-9350974565dc/nombre:
+    parameters: []
+    put:
+      summary: cambiar nombre producto
+      parameters: []
+      responses: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nuevoNombre:
+                  type: string
+  /franquicias/681b970528104a437fbc7a3d/sucursales/c8d64cd0-2089-4f8e-8472-0b4ab6ce74b8/productos:
+    parameters: []
+    post:
+      summary: agregar producto
+      parameters: []
+      responses: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                stock:
+                  type: integer
+  /franquicias/681b970528104a437fbc7a3d/sucursales:
+    parameters: []
+    post:
+      summary: agregar sucursal
+      parameters: []
+      responses: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre:
+                  type: string
+  /franquicias/681b970528104a437fbc7a3d/sucursales/c8d64cd0-2089-4f8e-8472-0b4ab6ce74b8/productos/c643f832-6160-42ac-96e8-2383c8eb12c3:
+    parameters: []
+    delete:
+      summary: eliminar producto
+      parameters: []
+      responses: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre:
+                  type: string

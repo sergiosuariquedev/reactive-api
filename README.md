@@ -33,6 +33,6 @@ Esto descargará las imágenes necesarias, construirá la aplicación y la ejecu
 La API estará disponible en http://localhost:8080.
 
 ##Notas
-La aplicación está dockerizada, por lo que es fácil de desplegar en cualquier entorno que soporte contenedores.
-
-Se utilizó Spring WebFlux para la creación de la API de manera reactiva, lo que permite una mayor escalabilidad y rendimiento en entornos de alta demanda.
+-La aplicación está dockerizada, por lo que es fácil de desplegar en cualquier entorno que soporte contenedores.
+-Se utilizó Spring WebFlux para la creación de la API de manera reactiva, lo que permite una mayor escalabilidad y rendimiento en entornos de alta demanda.
+-El archivo api-doc.yml contiene la documentación de los endpoints del api
