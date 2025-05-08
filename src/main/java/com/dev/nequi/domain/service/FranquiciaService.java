@@ -45,7 +45,6 @@ public class FranquiciaService {
     }
 
     public Mono<Franquicia> agregarProducto(String franquiciaId, String sucursalId, ProductoRequestDTO productoDTO) {
-        System.out.println(sucursalId);
         return franquiciaRepository.findById(franquiciaId)
             .switchIfEmpty(Mono.error(new RuntimeException("Franquicia no encontrada")))
             .flatMap(franquicia -> {
