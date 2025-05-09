@@ -6,13 +6,51 @@ info:
 servers:
   - url: localhost
 paths:
-  /franquicias/681b970528104a437fbc7a3d/productos/max-stock:
+  /productos/max-stock/40cc3e6b-4869-4367-850a-9b103e715589:
     parameters: []
     get:
       summary: max-stock
       parameters: []
       responses: {}
-  /franquicias/681b970528104a437fbc7a3d/nombre:
+  /franquicias:
+    parameters: []
+    get:
+      summary: todas la franquicias
+      parameters: []
+      responses: {}
+    post:
+      summary: crear franquicia
+      parameters: []
+      responses: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre:
+                  type: string
+  /sucursales:
+    parameters: []
+    get:
+      summary: todas la sucursales
+      parameters: []
+      responses: {}
+    post:
+      summary: agregar sucursal
+      parameters: []
+      responses: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                franquiciaId:
+                  type: string
+  /franquicias/40cc3e6b-4869-4367-850a-9b103e715589/nombre:
     parameters: []
     put:
       summary: cambiar nombre franquicia
@@ -26,7 +64,7 @@ paths:
               properties:
                 nuevoNombre:
                   type: string
-  /franquicias/681b970528104a437fbc7a3d/sucursales/10b7a384-77be-4e12-96e5-67779cc6bdbd/nombre:
+  /sucursales/cb3ea70a-4d90-49e9-a1f1-4c35283ec749/nombre:
     parameters: []
     put:
       summary: cambiar nombre sucursal
@@ -40,7 +78,7 @@ paths:
               properties:
                 nuevoNombre:
                   type: string
-  /franquicias/681b970528104a437fbc7a3d/sucursales/10b7a384-77be-4e12-96e5-67779cc6bdbd/productos/e93c96a8-d431-4b1c-95f0-9350974565dc/nombre:
+  /productos/3ac9003b-1f48-4883-96c2-2ab114be4ee2/nombre:
     parameters: []
     put:
       summary: cambiar nombre producto
@@ -54,7 +92,22 @@ paths:
               properties:
                 nuevoNombre:
                   type: string
-  /franquicias/681b970528104a437fbc7a3d/sucursales/c8d64cd0-2089-4f8e-8472-0b4ab6ce74b8/productos:
+  /productos/d1fc6585-35f2-4dcc-80a8-2563bf29bca0/stock:
+    parameters: []
+    put:
+      summary: actualizar stock producto
+      parameters: []
+      responses: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                stock:
+                  type: string
+                  format: utc-millisec
+  /productos:
     parameters: []
     post:
       summary: agregar producto
@@ -69,22 +122,11 @@ paths:
                 nombre:
                   type: string
                 stock:
-                  type: integer
-  /franquicias/681b970528104a437fbc7a3d/sucursales:
-    parameters: []
-    post:
-      summary: agregar sucursal
-      parameters: []
-      responses: {}
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                nombre:
                   type: string
-  /franquicias/681b970528104a437fbc7a3d/sucursales/c8d64cd0-2089-4f8e-8472-0b4ab6ce74b8/productos/c643f832-6160-42ac-96e8-2383c8eb12c3:
+                  format: color
+                sucursalId:
+                  type: string
+  /productos/d1fc6585-35f2-4dcc-80a8-2563bf29bca0:
     parameters: []
     delete:
       summary: eliminar producto
