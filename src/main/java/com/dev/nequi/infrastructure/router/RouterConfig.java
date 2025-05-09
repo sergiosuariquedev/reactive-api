@@ -6,57 +6,37 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
-import com.dev.nequi.infrastructure.handler.FranquiciaHandler;
+import com.dev.nequi.infrastructure.handler.GlobalHandler;
 
 @Configuration
 public class RouterConfig {
     @Bean
-    public RouterFunction<ServerResponse> franquiciasRoutes(FranquiciaHandler handler) {
+    public RouterFunction<ServerResponse> franquiciasRoutes(GlobalHandler handler) {
         return RouterFunctions.route()
             .POST("/franquicias", handler::crearFranquicia)
-            .GET("/franquicias", handler::obtenerTodasLasFranquicias)   
-            .build()
-            ;
-    }
-
-    @Bean
-    public RouterFunction<ServerResponse> sucursalRoutes(FranquiciaHandler handler) {
-        return RouterFunctions.route()
-            .POST("/franquicias/{id}/sucursales", handler::agregarSucursal)
-            .build();
-    }
-
-    @Bean
-    public RouterFunction<ServerResponse> productoRoutes(FranquiciaHandler handler) {
-        return RouterFunctions.route()
-            .POST("/franquicias/{id}/sucursales/{sucursal}/productos", handler::agregarProducto)
-            .DELETE("/franquicias/{id}/sucursales/{sucursalId}/productos/{productoId}", handler::eliminarProducto)
-            .build();
-    }
-
-    @Bean
-    public RouterFunction<ServerResponse> actualizarStockRoute(FranquiciaHandler handler) {
-        return RouterFunctions.route()
-            .PUT("/franquicias/{id}/sucursales/{sucursalId}/productos/{productoId}/stock", handler::actualizarStock)
-            .build();
-    }
-
-    @Bean
-    public RouterFunction<ServerResponse> productosConMasStockRoute(FranquiciaHandler handler) {
-        return RouterFunctions.route()
-            .GET("/franquicias/{id}/productos/max-stock", handler::obtenerProductosConMasStockPorSucursal)
-            .build();
-    }
-
-
-    @Bean
-    public RouterFunction<ServerResponse> actualizarNombreRoutes(FranquiciaHandler handler) {
-        return RouterFunctions.route()
+            .GET("/franquicias", handler::obtenerTodasLasFranquicias)
             .PUT("/franquicias/{id}/nombre", handler::actualizarNombreFranquicia)
-            .PUT("/franquicias/{id}/sucursales/{sucursalId}/nombre", handler::actualizarNombreSucursal)
-            .PUT("/franquicias/{id}/sucursales/{sucursalId}/productos/{productoId}/nombre", handler::actualizarNombreProducto)
             .build();
     }
 
+    @Bean
+    public RouterFunction<ServerResponse> sucursalRoutes(GlobalHandler handler) {
+        return RouterFunctions.route()
+            .POST("/sucursales", handler::agregarSucursal)
+            .GET("/sucursales", handler::obtenerTodasLasSucursales)
+            .PUT("/sucursales/{sucursalId}/nombre", handler::actualizarNombreSucursal)
+            .build();
+    }
+
+    @Bean
+    public RouterFunction<ServerResponse> productoRoutes(GlobalHandler handler) {
+        return RouterFunctions.route()
+            .POST("/productos", handler::agregarProducto)
+            .PUT("/productos/{productoId}/stock", handler::actualizarStock)
+            .PUT("/productos/{productoId}/nombre", handler::actualizarNombreProducto)
+            .DELETE("/productos/{productoId}", handler::eliminarProducto)
+            .GET("/productos/max-stock/{franquiciaId}", handler::obtenerProductosConMasStockPorSucursal)
+            .build();
+    }
 
 }
